@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <meta charset="UTF-8">
+<head>
+  <title>LearnAI.win - AI学习与技术探索</title>
+  <link rel="icon" href="MutantApeYachtClub213.ico">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .lang-btn {margin: 0 5px; padding: 3px 10px; cursor: pointer; border-radius: 4px; border: 1px solid #ccc; background: #f8f8f8;}
+    .lang-btn.active {background: #d1ecf1; border-color: #17a2b8; color: #17a2b8;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div style="text-align:right; margin-bottom:10px;">
+      <button class="lang-btn active" id="btn-zh">中文</button>
+      <button class="lang-btn" id="btn-en">English</button>
+      <button class="lang-btn" id="btn-es">Español</button>
+    </div>
+    <section>
+      <h2 id="about-title"></h2>
+      <p id="about-content"></p>
+    </section>
+    <section>
+      <h2 id="skills-title"></h2>
+      <ul id="skills-list"></ul>
+    </section>
+    <section>
+      <h2 id="nft-title"></h2>
+      <p id="nft-content"></p>
+    </section>
+    <section>
+      <h2 id="contact-title"></h2>
+      <p id="contact-content"></p>
+    </section>
+  </div>
+  <script>
+    const translations = {
+      zh: {
+        aboutTitle: "关于我",
+        aboutContent: "我是Justin Wu，来自阿根廷布宜诺斯艾利斯。",
+        skillsTitle: "技能",
+        skills: ["Finance/Audit", "Web3/Cripto", "Marketing/Sales/PM", "Product/ERP/ISO/CMMI", "PaaS/SaaS"],
+        nftTitle: "NFT收藏",
+        nftContent: '<a href="https://opensea.io/assets/ethereum/0x60e4d786628fea6478f785a6d7e704777c86a7c6/213" target="_blank">我的僵尸猿 Mutant APE 213</a>',
+        contactTitle: "联系方式",
+        contactContent: '邮箱：<a href="mailto:justin@a1.ar">justin@a1.ar</a>'
+      },
+      en: {
+        aboutTitle: "About Me",
+        aboutContent: "I am Justin Wu, from Buenos Aires, Argentina.",
+        skillsTitle: "Skills",
+        skills: ["Finance/Audit", "Web3/Crypto", "Marketing/Sales/PM", "Product/ERP/ISO/CMMI", "PaaS/SaaS"],
+        nftTitle: "NFT Collection",
+        nftContent: '<a href="https://opensea.io/assets/ethereum/0x60e4d786628fea6478f785a6d7e704777c86a7c6/213" target="_blank">My Mutant APE 213</a>',
+        contactTitle: "Contact",
+        contactContent: 'Email: <a href="mailto:justin@a1.ar">justin@a1.ar</a>'
+      },
+      es: {
+        aboutTitle: "Sobre mí",
+        aboutContent: "Soy Justin Wu, de Buenos Aires, Argentina.",
+        skillsTitle: "Habilidades",
+        skills: ["Finanzas/Auditoría", "Web3/Cripto", "Marketing/Ventas/PM", "Producto/ERP/ISO/CMMI", "PaaS/SaaS"],
+        nftTitle: "Colección NFT",
+        nftContent: '<a href="https://opensea.io/assets/ethereum/0x60e4d786628fea6478f785a6d7e704777c86a7c6/213" target="_blank">Mi Mutant APE 213</a>',
+        contactTitle: "Contacto",
+        contactContent: 'Correo electrónico: <a href="mailto:justin@a1.ar">justin@a1.ar</a>'
+      }
+    };
+    let currentLang = 'zh';
+    function updateLang(lang) {
+      currentLang = lang;
+      document.getElementById('about-title').innerHTML = translations[lang].aboutTitle;
+      document.getElementById('about-content').innerHTML = translations[lang].aboutContent;
+      document.getElementById('skills-title').innerHTML = translations[lang].skillsTitle;
+      const skillsList = document.getElementById('skills-list');
+      skillsList.innerHTML = '';
+      translations[lang].skills.forEach(skill => {
+        const li = document.createElement('li');
+        li.textContent = skill;
+        skillsList.appendChild(li);
+      });
+      document.getElementById('nft-title').innerHTML = translations[lang].nftTitle;
+      document.getElementById('nft-content').innerHTML = translations[lang].nftContent;
+      document.getElementById('contact-title').innerHTML = translations[lang].contactTitle;
+      document.getElementById('contact-content').innerHTML = translations[lang].contactContent;
+      // 按钮高亮
+      document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    }
+    document.getElementById('btn-zh').onclick = () => updateLang('zh');
+    document.getElementById('btn-en').onclick = () => updateLang('en');
+    document.getElementById('btn-es').onclick = () => updateLang('es');
+    // 初始化
+    updateLang(currentLang);
+  </script>
+</body>
+</html>
